@@ -1,24 +1,19 @@
 import Link from "next/link";
 import type { Recipe } from "../data/recipes";
+import { cuisineColor } from "../lib/cuisineColor";
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
-    <Link
-      href={`/recipe/${recipe.id}`}
-      style={{ textDecoration: "none", color: "inherit" }}
-    >
+    <Link href={`/recipe/${recipe.id}`} className="card">
       <div
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: 12,
-          padding: 20,
-          cursor: "pointer",
-        }}
+        className="card-top"
+        style={{ backgroundColor: cuisineColor(recipe.cuisine) }}
       >
-        <h3 style={{ margin: 0 }}>{recipe.title}</h3>
-        <p style={{ margin: "8px 0 0", color: "#666" }}>
-          {recipe.cuisine} · {recipe.time}
-        </p>
+        <span className="card-cuisine">{recipe.cuisine}</span>
+      </div>
+      <div className="card-body">
+        <h3 className="card-title">{recipe.title}</h3>
+        <span className="pill">{recipe.time}</span>
       </div>
     </Link>
   );

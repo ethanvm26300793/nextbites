@@ -2,12 +2,15 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main style={{ padding: 32, textAlign: "center" }}>
-      <h1>Recipe not found</h1>
-      <p style={{ margin: "12px 0 24px" }}>
-        We couldn&apos;t find that page. Maybe the recipe was eaten already.
+    <main className="page state">
+      <h1>Nothing cooking here</h1>
+      <p>
+        We couldn&apos;t find that page. The recipe may have been renamed or
+        removed.
       </p>
-      <Link href="/">← Back to all recipes</Link>
+      <Link href="/" className="button">
+        Back to all recipes
+      </Link>
     </main>
   );
 }

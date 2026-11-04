@@ -18,30 +18,25 @@ export default function RecipeGrid({ recipes }: { recipes: Recipe[] }) {
     <div>
       <input
         type="text"
+        className="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search by title or cuisine..."
-        style={{
-          width: "100%",
-          maxWidth: 400,
-          padding: "10px 14px",
-          marginBottom: 24,
-          borderRadius: 8,
-          border: "1px solid #ccc",
-          fontSize: 16,
-        }}
+        placeholder="Search by title or cuisine"
+        aria-label="Search recipes"
       />
 
       {matches.length === 0 ? (
-        <p>No recipes match &quot;{query}&quot;. Try another search!</p>
+        <div>
+          <p className="empty">
+            No recipes match &quot;{query}&quot;. Check the spelling or try a
+            cuisine name.
+          </p>
+          <button className="button" onClick={() => setQuery("")}>
+            Clear search
+          </button>
+        </div>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div className="grid">
           {matches.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}

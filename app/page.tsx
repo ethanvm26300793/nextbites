@@ -3,9 +3,11 @@ import { recipes } from "./data/recipes";
 
 export default function Home() {
   return (
-    <main style={{ padding: 32 }}>
-      <h1>NextBites</h1>
-      <p style={{ marginBottom: 24 }}>Find your next favourite recipe.</p>
+    <main className="page">
+      <section className="hero">
+        <h1>What are we cooking today?</h1>
+        <p>Browse the recipes below, or search by name or cuisine.</p>
+      </section>
       <RecipeGrid recipes={recipes} />
     </main>
   );
