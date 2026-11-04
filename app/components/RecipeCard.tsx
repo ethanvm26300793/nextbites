@@ -1,15 +1,25 @@
-// app/components/RecipeCard.tsx
-import { Recipe } from '../data/recipes';
+import Link from "next/link";
+import type { Recipe } from "../data/recipes";
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
-    <div style={{ border: '1px solid #ddd', padding: '16px', borderRadius: '8px' }}>
-      <h2>{recipe.title}</h2>
-      <p>{recipe.description}</p>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontSize: '0.9rem', color: '#555' }}>
-        <span>⏱️ {recipe.minutes} mins</span>
-        <span>🌍 {recipe.cuisine}</span>
+    <Link
+      href={`/recipe/${recipe.id}`}
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
+      <div
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: 12,
+          padding: 20,
+          cursor: "pointer",
+        }}
+      >
+        <h3 style={{ margin: 0 }}>{recipe.title}</h3>
+        <p style={{ margin: "8px 0 0", color: "#666" }}>
+          {recipe.cuisine} · {recipe.time}
+        </p>
       </div>
-    </div>
+    </Link>
   );
 }
