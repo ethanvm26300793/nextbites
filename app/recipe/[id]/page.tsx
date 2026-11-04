@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRecipe, recipes } from "../../data/recipes";
+import { cuisineColor } from "../../lib/cuisineColor";
 
 export const dynamicParams = false;
 
@@ -21,27 +22,41 @@ export default async function RecipePage({
   }
 
   return (
-    <main style={{ padding: 32, maxWidth: 700, margin: "0 auto" }}>
-      <Link href="/">← Back to all recipes</Link>
+    <main className="page">
+      <Link href="/" className="back">
+        Back to all recipes
+      </Link>
 
-      <h1 style={{ marginTop: 16 }}>{recipe.title}</h1>
-      <p style={{ color: "#666", marginBottom: 24 }}>
-        {recipe.cuisine} · {recipe.time}
-      </p>
+      <header
+        className="recipe-hero"
+        style={{ backgroundColor: cuisineColor(recipe.cuisine) }}
+      >
+        <h1>{recipe.title}</h1>
+        <div className="recipe-meta">
+          <span className="pill">{recipe.cuisine}</span>
+          <span className="pill">{recipe.time}</span>
+        </div>
+      </header>
 
-      <h2>Ingredients</h2>
-      <ul>
-        {recipe.ingredients.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+      <div className="recipe-layout">
+        <section className="panel">
+          <h2>Ingredients</h2>
+          <ul className="ingredients">
+            {recipe.ingredients.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
 
-      <h2 style={{ marginTop: 24 }}>Steps</h2>
-      <ol>
-        {recipe.steps.map((step, i) => (
-          <li key={i}>{step}</li>
-        ))}
-      </ol>
+        <section>
+          <h2>Steps</h2>
+          <ol className="steps">
+            {recipe.steps.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ol>
+        </section>
+      </div>
     </main>
   );
 }

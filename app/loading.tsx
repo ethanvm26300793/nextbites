@@ -1,7 +1,12 @@
 export default function Loading() {
   return (
-    <main style={{ padding: 32 }}>
-      <p>Loading recipes…</p>
+    <main className="page" aria-busy="true">
+      <p className="empty">Loading recipes…</p>
+      <div className="grid">
+        {[1, 2, 3, 4].map((n) => (
+          <div key={n} className="skeleton" />
+        ))}
+      </div>
     </main>
   );
 }
