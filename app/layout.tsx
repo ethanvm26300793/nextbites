@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NextBites",
-  description: "A recipe sharing app",
+  description: "Search and browse tasty recipes by title or cuisine.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
