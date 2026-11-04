@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },
-  basePath: process.env.NODE_ENV === "production" ? "/nextbites" : "",
+  basePath: process.env.GITHUB_ACTIONS ? "/nextbites" : "",
 };
 
 export default nextConfig;
